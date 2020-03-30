@@ -1,0 +1,28 @@
+현재
+1. 데이터 txt로 뽑아 저장  -> 그냥 먼저 sql에 해당 url이 있는지 확인하고 저장한다.
+
+2. 완료시 excel로 다시 저장
+3. 
+
+
+
+
+데이터로 저장되는 것
+
+수집일자        pdate                       varchar(255)
+해당 뉴스일자   newsdate                    varchar(255)
+해당 뉴스매체   newsco                      varchar(255)
+뉴스 제목       newstitle                   varchar(255)
+뉴스 내용       newscontent                 LONGTEXT
+뉴스 링크       newslink  (UNIQUE)          varchar(255)
+
+https://mariadb.com/kb/en/data-types/
+
+
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT UC_Person UNIQUE (ID,LastName)
+);
