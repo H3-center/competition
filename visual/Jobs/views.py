@@ -37,22 +37,23 @@ def job_list_form(request):
 
 def job_list_update_form(request,id):
     instance = get_object_or_404(Job, pk=id)
+    form = JobForm(instance=instance)
+    context = {'form': form}        
+    
     if request.method == 'POST':
-        form = JobForm(request.POST,request.FILES)
+        form = JobForm(data=request.POST,instance=instance)
         if form.is_valid():
-            instance=form.save(commit=False)
-            instance.s_word = request.s_word
-            instance.media = request.media
+            instance.s_word = form.cleaned_data['s_word']
+            instance.media = form.cleaned_data['media']
             instance.active_status = 1
             instance.executed_date = '1900-01-01'
             instance.complited_date = '1900-01-01'
-            instance.t_st_date = request.t_st_date
-            instance.t_end_date = request.t_end_date          
+            instance.t_st_date = form.cleaned_data['t_st_date']
+            instance.t_end_date = form.cleaned_data['t_end_date']
             instance.save()
             return redirect(reverse('jobs:joblist'))
-    form = JobForm(instance=instance, data=request.POST)
-    print(form)
-    context = {'form': form}        
+        else:
+            return HttpResponse("입력 실패")
     return render(request, 'form.html',context)
 
 
@@ -106,18 +107,17 @@ def target_list_form(request):
 
 def target_list_update_form(request,id):
     instance = get_object_or_404(Target_list, pk=id)
+    form = Target_list_Form(instance=instance)
+    context = {'form': form}        
     if request.method == 'POST':
-        form = Target_list_Form(request.POST,request.FILES)
+        form = Target_list_Form(data=request.POST,instance=instance)
         if form.is_valid():
-            instance = form.save(commit=False)
-            instance.active_status = request.active_status
-            instance.executed_date = request.executed_date
-            instance.complited_date = request.complited_date
+            instance.active_status = form.cleaned_data['media']
+            instance.executed_date = form.cleaned_data['crawling_url']
+            instance.complited_date = form.cleaned_data['input_col']
             instance.save()
             return redirect(reverse('jobs:targetlist'))
-    form = Target_list_Form(instance=instance, data=request.POST)
+        else:
+            return HttpResponse("입력 실패")
     print(form)
-    context = {'form': form}        
     return render(request, 'form.html',context)
-    
-

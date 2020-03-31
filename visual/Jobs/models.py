@@ -26,5 +26,4 @@ class Target_list(models.Model):
 
 
 
-
 # Create your models here.
