@@ -18,4 +18,13 @@ class Job(models.Model):
         self.executed_date=timezone.now()
         self.save()
 
+
+class Target_list(models.Model):
+    media=models.CharField(max_length=200)
+    crawling_url=models.URLField(max_length=300)
+    input_col=models.TextField() ## , seperater로 데이터를 넣고 구분 (프론트에서 한번 백에서 한번 벨리데이션 체크)
+
+
+
+
 # Create your models here.
