@@ -24,8 +24,8 @@
                                         <img src="{% static 'images/icon/avatar-06.jpg' %}" alt="Michelle Moreno" />
                                     </div>
                                     <div class="content">
-                                        <h6>Michelle Moreno</h6>
-                                        <p>Have sent a photo</p>
+                                        <h6>홍하영 책임</h6>
+                                        <p>새로운 메시지가 있습니다.</p>
                                         <span class="time">3 min ago</span>
                                     </div>
                                 </div>
@@ -34,13 +34,13 @@
                                         <img src="{% static 'images/icon/avatar-04.jpg' %}" alt="Diane Myers" />
                                     </div>
                                     <div class="content">
-                                        <h6>Diane Myers</h6>
-                                        <p>You are now connected on message</p>
+                                        <h6>김휘중 사원</h6>
+                                        <p>연결되는 메시지가 있습니다.</p>
                                         <span class="time">Yesterday</span>
                                     </div>
                                 </div>
                                 <div class="mess__footer">
-                                    <a href="#">View all messages</a>
+                                    <a href="#">전체 메시지 보기</a>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                                 <img src="{% static 'images/icon/avatar-01.jpg' %}" alt="John Doe" />
                             </div>
                             <div class="content">
-                                <a class="js-acc-btn" href="#">john doe</a>
+                                <a class="js-acc-btn" href="#">{{ user.nickname }}</a>
                             </div>
                             <div class="account-dropdown js-dropdown">
                                 <div class="info clearfix">
@@ -140,9 +140,9 @@
                                     </div>
                                     <div class="content">
                                         <h5 class="name">
-                                            <a href="#">john doe</a>
+                                            <a href="#">{{ user.nickname }}</a>
                                         </h5>
-                                        <span class="email">johndoe@example.com</span>
+                                        <span class="email">{{ user.email }}</span>
                                     </div>
                                 </div>
                                 <div class="account-dropdown__body">
@@ -160,7 +160,7 @@
                                     </div>
                                 </div>
                                 <div class="account-dropdown__footer">
-                                    <a href="#">
+                                    <a href="{% url 'accounts:logout' %}">
                                         <i class="zmdi zmdi-power"></i>Logout</a>
                                 </div>
                             </div>

@@ -11,7 +11,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Register</title>
+    <title>Penta-Analytics</title>
 
     <!-- Fontfaces CSS-->
     <link href="{% static 'css/font-face.css' %}"rel="stylesheet" media="all">
@@ -43,10 +43,13 @@
             <!-- PAGE CONTAINER-->
             <div class="page-container">
                 {% include 'header_desk.html' %}
+                <div class="main-content">
+                {% block content %}
+                {% endblock %}
+                </div>
             </div>
         This is base
-        {% block content %}
-        {% endblock %}
+        
     </div>
 
     <!-- Jquery JS-->

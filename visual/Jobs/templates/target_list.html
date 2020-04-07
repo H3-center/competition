@@ -1,15 +1,43 @@
-타겟 리스트 보여주는 페이지
-<ul>
-{% for target in target_list %}
-<h2>{{target.id}}</h2>
-   <li> {{target.media}}</li>
-   <li> {{target.crawling_url}}</li>
-   <li> {{target.input_col}}</li>
-   <a href="{% url 'jobs:tdel' target.id %}">Delete</a>
-   <a href="{% url 'jobs:tupdate' target.id %}">Edit</a>
-<li></li>
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div style="margin:auto;" class="col-lg-11">
+        <div class="overview-wrap">
+            <h2 class="title-1">Target Lists</h2>
+            <button class="au-btn au-btn-icon au-btn--blue">
+                <i class="zmdi zmdi-plus"></i>add item</button>
+        </div>
+        <hr>
+        <div class="table-responsive table--no-card m-b-30">
+            <table style="table-layout:fixed;" class="table table-borderless table-striped table-earning">
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">ID</th>
+                        <th>Media</th>
+                        <th>URL</th>
+                        <th>Column</th>
+                        <th style="width: 10%;">Delete</th>
+                        <th style="width: 10%;">Edit</th>
+                    </tr>
+                </thead>
 
+                <tbody>
 
-{% endfor %}
-
-</ul>
+                    {% for target in target_list %}
+                    <tr>
+                        <td style="width: 5%; overflow: hidden; text-overflow: ellipsis;">{{target.id}}</td>
+                        <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.media}}</td>
+                        <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.crawling_url}}</td>
+                        <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.input_col}}</td>
+                        <td><a href="{% url 'jobs:tdel' target.id %}">Delete</a></td>
+                        <td><a href="{% url 'jobs:tupdate' target.id %}">Edit</a></td>
+                    </tr>    
+                    {% endfor %}
+                    
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

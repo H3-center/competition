@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div style="margin:auto;" class="col-lg-11">
+        <div class="overview-wrap">
+            <h2 class="title-1">Job Lists</h2>
+            <button class="au-btn au-btn-icon au-btn--blue">
+                <i class="zmdi zmdi-plus"></i>add item</button>
+        </div>
+        <hr>
+        <div class="table-responsive table--no-card m-b-30">
+            <table style="table-layout:fixed;" class="table table-borderless table-striped table-earning">
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">ID</th>
+                        <th>Keyword</th>
+                        <th>media</th>
+                        <th>active_status</th>
+                        <th>executed_date</th>
+                        <th>complited_date</th>
+                        <th>t_st_date</th>
+                        <th>t_end_date</th>
+                        <th style="width: 8%;">Delete</th>
+                        <th style="width: 8%;">Edit</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for target in job_list %}
+                    <tr>
+                        <td style="width: 5%; overflow: hidden; text-overflow: ellipsis;">{{target.id}}</td>
+                        <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.s_word}}</td>
+                        <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.media.media}}</td>
+                        <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.active_status}}</td>
+                        <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.executed_date}}</td>
+                        <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.complited_date}}</td>
+                        <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.t_st_date}}</td>
+                        <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.t_end_date}}</td>
+                        <td><a href="{% url 'jobs:del' target.id %}">Delete</a></td>
+                        <td><a href="{% url 'jobs:update' target.id %}">Edit</a></td>
+                        
+                    </tr>    
+                    {% endfor %}
+                    
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -4,10 +4,15 @@ from django.db import models
 from django.utils import timezone
 
 
-class Job(models.Model):
-    
-    s_word=models.CharField(max_length=255)
+class Target_list(models.Model):
     media=models.CharField(max_length=200)
+    crawling_url=models.URLField(max_length=300)
+    input_col=models.TextField() ## , seperater로 데이터를 넣고 구분 (프론트에서 한번 백에서 한번 벨리데이션 체크)
+
+
+class Job(models.Model):
+    s_word=models.CharField(max_length=255)
+    media=models.ForeignKey(Target_list,on_delete=True)
     active_status=models.IntegerField()
     executed_date=models.DateField()
     complited_date=models.DateField()
@@ -19,10 +24,7 @@ class Job(models.Model):
         self.save()
 
 
-class Target_list(models.Model):
-    media=models.CharField(max_length=200)
-    crawling_url=models.URLField(max_length=300)
-    input_col=models.TextField() ## , seperater로 데이터를 넣고 구분 (프론트에서 한번 백에서 한번 벨리데이션 체크)
+
 
 
 

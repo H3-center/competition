@@ -25,7 +25,7 @@ def signup(request):
 
 def signin(request):
     if request.user.is_authenticated:
-        return HttpResponse('이미 로그인된 유저')
+        return redirect(reverse('jobs:overview'))
     if request.method == "POST":
         form = LoginForm(request.POST)
         email = request.POST['email']
@@ -33,9 +33,9 @@ def signin(request):
         user = authenticate(email = email, password = password)
         if user is not None:
             login(request,user)
-            return HttpResponse('로그인 성공')
+            return redirect(reverse('jobs:overview'))
         else:
-            return HttpResponse('로그인 실패. 다시 시도 해보세요.')
+            return redirect(reverse('accounts:signin'))
     else:
         form = LoginForm()
         return render(request,'login.html',{'form':form})

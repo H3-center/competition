@@ -4,18 +4,35 @@ from django.http import HttpResponse,HttpResponseRedirect
 from .models import Target_list,Job
 from .form import *
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='/')
 def main(request):
     return HttpResponse("This is Jobs")
 
+@login_required(login_url='/')
+def overview(request):
+    return render(request,'overview.html')
+
+@login_required(login_url='/')
+def chart(request):
+    return render(request,'chart.html')
+
+
+@login_required(login_url='/')
+def table(request):
+    return render(request,'table.html')
+
+
+@login_required(login_url='/')
 def job_list(request):
     job_list=Job.objects.all()
     
     context = {'job_list':job_list}
     return  render(request, 'job_list.html', context)
 
-
+@login_required(login_url='/')
 def job_list_form(request):
     if request.method == 'POST':
         form = JobForm(request.POST,request.FILES)
@@ -34,7 +51,7 @@ def job_list_form(request):
     context = {'form': form}        
     return render(request, 'form.html',context)
 
-
+@login_required(login_url='/')
 def job_list_update_form(request,id):
     instance = get_object_or_404(Job, pk=id)
     form = JobForm(instance=instance)
@@ -56,7 +73,7 @@ def job_list_update_form(request,id):
             return HttpResponse("입력 실패")
     return render(request, 'form.html',context)
 
-
+@login_required(login_url='/')
 def job_del(request,id):
     instance = get_object_or_404(Job, pk=id)
     
@@ -66,7 +83,7 @@ def job_del(request,id):
 
     return redirect(reverse('jobs:joblist'))
 
-
+@login_required(login_url='/')
 def target_list(request):
     target_list=Target_list.objects.all()
 
@@ -74,7 +91,7 @@ def target_list(request):
     # print(context)
     return render(request, 'target_list.html', context)
 
-
+@login_required(login_url='/')
 def target_del(request,id):
     t_instance = get_object_or_404(Target_list, pk=id)
     
@@ -84,6 +101,8 @@ def target_del(request,id):
 
     return redirect(reverse('jobs:targetlist'))
 
+
+@login_required(login_url='/')
 def target_list_form(request):
     if request.method == 'POST':
         form = Target_list_Form(request.POST,request.FILES)
@@ -104,7 +123,7 @@ def target_list_form(request):
     # return HttpResponse("This is Target_list view")
 
 
-
+@login_required(login_url='/')
 def target_list_update_form(request,id):
     instance = get_object_or_404(Target_list, pk=id)
     form = Target_list_Form(instance=instance)

@@ -13,4 +13,7 @@ urlpatterns = [
     path('tdel/<int:id>/',views.target_del,  name="tdel"),
     path('update/<int:id>/',views.job_list_update_form,  name="update"),
     path('tupdate/<int:id>/',views.target_list_update_form,  name="tupdate"),
+    path('overview/',views.overview,name="overview"),
+    path('chart/',views.chart,name="chart"),
+    path('table/',views.table,name="table"),
 ]

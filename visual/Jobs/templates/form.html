@@ -1,8 +1,24 @@
-<form action="" method="POST">
-    {% csrf_token %}
-    <table>
-        {{form.as_table}}
+{% extends 'base.html' %}
 
-    </table>
-    <input type="submit" value="제출">
-</form>
+{% block content %}
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-header">
+            <strong>DATA Insert</strong>
+            <small>Form</small>
+        </div>
+        <div class="card-body card-block">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    <div class="form-control" >{{ field }}</div>
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-secondary btn-sm">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
