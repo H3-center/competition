@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'Logs',
     'Jobs',
     'accounts',
+    'module',
 ]
 
 MIDDLEWARE = [
