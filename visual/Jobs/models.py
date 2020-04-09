@@ -9,6 +9,8 @@ class Target_list(models.Model):
     crawling_url=models.URLField(max_length=300)
     input_col=models.TextField() ## , seperater로 데이터를 넣고 구분 (프론트에서 한번 백에서 한번 벨리데이션 체크)
 
+    def __str__(self):
+        return self.media
 
 class Job(models.Model):
     s_word=models.CharField(max_length=255)
@@ -22,6 +24,8 @@ class Job(models.Model):
     def execute(self):
         self.executed_date=timezone.now()
         self.save()
+
+    
 
 
 

@@ -3,11 +3,13 @@ from django.http import HttpResponse
 from Jobs.models import Job
 
 
-from module.monitor import get_statistics
+from module.monitor import get_statistics,findProcessIdByName
 # Create your views here.
 def main(request):
-    statistics=get_statistics()
-    print(statistics)
+    # statistics=get_statistics()
+    # print(statistics)
+    result = findProcessIdByName('exe')
+    print(result)
     return render(request, 'base.html')
 
 

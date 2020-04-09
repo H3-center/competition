@@ -2,7 +2,7 @@ import os
 import subprocess
 import re
 import shutil
-
+import psutil
 
 def get_statistics():
     statistics = {}
@@ -88,6 +88,20 @@ def get_statistics():
     )
     return statistics
 
+
+
+def findProcessIdByName(processName):
+    listofProcessObjects = []
+
+    for proc in psutil.process_iter():
+        try:
+            pinfo = proc.as_dict(attrs=['pid','name','create_time'])
+            if processName.lower() in pinfo['name'].lower():
+                listofProcessObjects.append(pinfo)
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            pass
+
+    return listofProcessObjects
 
 # statistics = get_statistics()
 
