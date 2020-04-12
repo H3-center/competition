@@ -1,8 +1,7 @@
 from django.db import models
 from django.conf import settings
-from django.db import models
 from django.utils import timezone
-
+from accounts.models import MyUser
 
 class Target_list(models.Model):
     media=models.CharField(max_length=200)
@@ -13,6 +12,7 @@ class Target_list(models.Model):
         return self.media
 
 class Job(models.Model):
+    user = models.ForeignKey(MyUser,on_delete=models.CASCADE)
     s_word=models.CharField(max_length=255)
     media=models.ForeignKey(Target_list,on_delete=True)
     active_status=models.IntegerField()
