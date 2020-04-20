@@ -25,7 +25,7 @@
 
                     {% for target in target_list %}
                     <tr>
-                        <td style="width: 5%; overflow: hidden; text-overflow: ellipsis;">{{target.id}}</td>
+                        <td style="width: 5%; overflow: hidden; text-overflow: ellipsis;">{{ forloop.counter }}</td>
                         <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.media}}</td>
                         <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.crawling_url}}</td>
                         <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.input_col}}</td>

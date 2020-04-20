@@ -29,7 +29,7 @@
 
                     {% for target in job_list %}
                     <tr>
-                        <td style="width: 5%; overflow: hidden; text-overflow: ellipsis;">{{target.id}}</td>
+                        <td style="width: 5%; overflow: hidden; text-overflow: ellipsis;">{{ forloop.counter }}</td>
                         <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.s_word}}</td>
                         <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.media.media}}</td>
                         <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.active_status}}</td>

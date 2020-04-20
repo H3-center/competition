@@ -39,6 +39,16 @@ Notes:	decreasing heading by 0.4em with every subsequent heading level
 /*-----------------------------------------------------*/
 /*                   GENERIC                           */
 /*-----------------------------------------------------*/
+
+/*------ custom --------*/
+.form-control input{
+    width: 100%;
+}
+
+.overview-box.clearfix{
+    display: flex;
+    flex-direction: column;
+}
 /* ----- Normalize ----- */
 * {
     margin: 0;

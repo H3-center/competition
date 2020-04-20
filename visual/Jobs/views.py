@@ -5,7 +5,7 @@ from .models import Target_list,Job
 from .form import *
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth import get_user_model
 # Create your views here.
 @login_required(login_url='/')
 def main(request):
@@ -27,7 +27,8 @@ def table(request):
 
 @login_required(login_url='/')
 def job_list(request):
-    job_list=Job.objects.all()
+    user = request.user
+    job_list=Job.objects.filter(user_id=user.id)
     
     context = {'job_list':job_list}
     return  render(request, 'job_list.html', context)
@@ -85,8 +86,8 @@ def job_del(request,id):
 
 @login_required(login_url='/')
 def target_list(request):
-    target_list=Target_list.objects.all()
-
+    user = request.user
+    target_list=Target_list.objects.filter(user_id=user.id)
     context = {'target_list':target_list}
     # print(context)
     return render(request, 'target_list.html', context)
@@ -107,11 +108,9 @@ def target_list_form(request):
     if request.method == 'POST':
         form = Target_list_Form(request.POST,request.FILES)
         if form.is_valid():
-            job = form.save(commit=False)
-            job.active_status = 1
-            job.executed_date = '1900-01-01'
-            job.complited_date = '1900-01-01'
-            job.save()
+            target = form.save(commit=False)
+            target.user_id = request.user.id
+            target.save()
             print("success")
             return redirect(reverse('jobs:targetlist'))
         else:

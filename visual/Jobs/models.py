@@ -1,9 +1,11 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-from accounts.models import MyUser
+from django.contrib.auth import get_user_model
+
 
 class Target_list(models.Model):
+    user = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
     media=models.CharField(max_length=200)
     crawling_url=models.URLField(max_length=300)
     input_col=models.TextField() ## , seperater로 데이터를 넣고 구분 (프론트에서 한번 백에서 한번 벨리데이션 체크)
@@ -12,7 +14,7 @@ class Target_list(models.Model):
         return self.media
 
 class Job(models.Model):
-    user = models.ForeignKey(MyUser,on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
     s_word=models.CharField(max_length=255)
     media=models.ForeignKey(Target_list,on_delete=True)
     active_status=models.IntegerField()
