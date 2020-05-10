@@ -45,9 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_seed',
-    'Logs',
-    'Jobs',
     'accounts',
+    'Jobs',
+    'Logs',
+    'crawlingresult',
     'module',
 ]
 
@@ -84,6 +85,8 @@ WSGI_APPLICATION = 'visual.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+
+
 
 DATABASES = {
     'default': {

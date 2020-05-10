@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime
 import re
 
-RESULT_PATH= './'
+RESULT_PATH= '/c/Users/owner0220/Desktop/competition/visual/'
 now = datetime.now()
 
 
@@ -98,7 +98,7 @@ def excel_make():
 
 
 
-main()
+# main()
 
 
 # https://search.naver.com/search.naver?&where=news&query=%EC%82%BC%EC%84%B1&start=11

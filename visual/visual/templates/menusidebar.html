@@ -27,10 +27,12 @@
                         <i class="far fa-check-square"></i>Jobs</a>
                         <!-- <i class="fas fa-table"></i>Jobs</a> -->
                 </li>
+                {% if request.user.is_admin %}
                 <li>
                     <a href="{% url 'jobs:targetlist' %}">
                         <i class="fas fa-copy"></i>Targets</a>
                 </li>
+                {% endif %}
                 <!-- <li>
                     <a href="calendar.html">
                         <i class="fas fa-calendar-alt"></i>Calendar</a>

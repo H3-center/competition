@@ -22,6 +22,7 @@ class Job(models.Model):
     complited_date=models.DateField()
     t_st_date=models.DateField()
     t_end_date=models.DateField()
+    
 
     def execute(self):
         self.executed_date=timezone.now()

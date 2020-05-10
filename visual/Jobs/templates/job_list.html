@@ -20,6 +20,7 @@
                         <th>complited_date</th>
                         <th>t_st_date</th>
                         <th>t_end_date</th>
+                        <th style="width: 8%;">Execute</th>
                         <th style="width: 8%;">Delete</th>
                         <th style="width: 8%;">Edit</th>
                     </tr>
@@ -37,6 +38,7 @@
                         <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.complited_date}}</td>
                         <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.t_st_date}}</td>
                         <td style="overflow: hidden; text-overflow: ellipsis;"> {{target.t_end_date}}</td>
+                        <td><a href="{% url 'jobs:crawling' target.id %}">Execute</a></td>
                         <td><a href="{% url 'jobs:del' target.id %}">Delete</a></td>
                         <td><a href="{% url 'jobs:update' target.id %}">Edit</a></td>
                         

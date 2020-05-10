@@ -16,4 +16,5 @@ urlpatterns = [
     path('overview/',views.overview,name="overview"),
     path('chart/',views.chart,name="chart"),
     path('table/',views.table,name="table"),
+    path('crawling/<int:id>/',views.crawling,name="crawling"),
 ]
