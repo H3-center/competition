@@ -19,3 +19,151 @@
 
 - 키바나 하이퍼링크
 
+
+
+
+
+
+
+
+
+DB 설계  ( url 끝에는  '/'을 붙이기 않는다.)  ※DB 테이블 명명 규칙 ( 기능 대분류 / 권한 / 기능 중분류 )
+
+
+api_method
+- 요청방법	method				VARCHAR
+- 설명	discription			VARCHAR
+
+
+api_response
+- 응답값	response_code		INTEGER
+- 설명	discription			VARCHAR
+
+
+admin_custom_pattern
+- 패턴	pattern				VARCHAR
+-adm타겟	admin_target		INTEGER		(request_user_target key id 값)
+
+
+
+user_custom_pattern
+- 패턴	pattern				VARCHAR
+-usr타겟	user_target			INTEGER		(request_user_target key id 값)
+
+
+
+request_admin_custom_parse_result
+- 결과	result				VARCHAR
+- 패턴	admin_custom_pattern_id			INTEGER		(admin_custom_pattern key id 값)
+
+
+
+request_user_custom_parse_result
+- 결과	result				VARCHAR
+- 패턴	user_custom_pattern_id			INTEGER		(user_custom_pattern key id 값)
+
+request_result
+- 종류	extension			VARCHAR
+
+
+request_baseurl   
+- 접속자	access_user			INTEGER
+- 등록일	enrolled_date 		DATETIME
+- 수정일	edited_date			DATETIME
+- 사용중	is_active			INTEGER
+- 승인된	is_approved			INTEGER
+- 기본주소	baseurl				VARCHAR
+
+
+request_suburl
+- 접속자	access_user			INTEGER
+- 등록일	enrolled_date 		DATETIME
+- 수정일	edited_date			DATETIME
+- 사용중	is_active			INTEGER
+- 승인된	is_approved			INTEGER
+- 서브주소	suburl				VARCHAR
+
+
+request_header
+- 접속자	access_user			INTEGER
+- 등록일	enrolled_date 		DATETIME
+- 수정일	edited_date			DATETIME
+- 사용중	is_active			INTEGER
+- 승인된	is_approved			INTEGER
+- 헤더값	header				VARCHAR
+
+
+request_param
+- 접속자	access_user			INTEGER
+- 등록일	enrolled_date 		DATETIME
+- 수정일	edited_date			DATETIME
+- 사용중	is_active			INTEGER
+- 승인된	is_approved			INTEGER
+- 요청값	param				VARCHAR
+
+
+
+
+request_admin_target
+- 접속자	access_user			INTEGER
+- 등록일	enrolled_date 		DATETIME
+- 수정일	edited_date			DATETIME
+- 사용중	is_active			INTEGER
+- 승인된	is_approved			INTEGER
+- 기본주소	baseurl				INTEGER		(request_baseurl key id 값)
+- 헤더값	header				INTEGER		(request_header key id 값)
+- 서브주소	suburl				INTEGER		(request_suburl key id 값)
+- 요청값	param				INTEGER		(request_param key id 값)
+
+
+
+request_user_target
+- 접속자	access_user			INTEGER
+- 등록일	enrolled_date 		DATETIME
+- 수정일	edited_date			DATETIME
+- 사용중	is_active			INTEGER
+- 승인된	is_approved			INTEGER
+- 기본주소	baseurl				INTEGER		(request_baseurl key id 값)
+- 헤더값	header				INTEGER		(request_header key id 값)
+- 서브주소	suburl				INTEGER		(request_suburl key id 값)
+- 요청값	param				INTEGER		(request_param key id 값)
+
+
+request_admin_raw
+- 접속자	access_user			INTEGER
+- 등록일	enrolled_date 		DATETIME
+- 수정일	edited_date			DATETIME
+- 사용중	is_active			INTEGER
+- 승인된	is_approved			INTEGER
+-adm타겟	admin_target		INTEGER		(request_admin_target key id 값)
+- 종류	extension			INTEGER		(request_result key id 값)
+- raw값	raw값				VARCHAR
+
+
+request_user_raw
+- 접속자	access_user			INTEGER
+- 등록일	enrolled_date 		DATETIME
+- 수정일	edited_date			DATETIME
+- 사용중	is_active			INTEGER
+- 승인된	is_approved			INTEGER
+-adm타겟	user_target			INTEGER		(request_user_target key id 값)
+- 종류	extension			INTEGER		(request_result key id 값)
+- raw값	raw값				VARCHAR
+
+
+request_admin_target_log
+- 접속자	access_user			INTEGER
+- 등록일	enrolled_date 		DATETIME
+- 수정일	edited_date			DATETIME
+- 사용중	is_active			INTEGER
+- 승인된	is_approved			INTEGER
+- 타깃주소	admin_target		INTEGER		(request_admin_target key id 값)
+
+
+request_user_target_log
+- 접속자	access_user			INTEGER
+- 등록일	enrolled_date 		DATETIME
+- 수정일	edited_date			DATETIME
+- 사용중	is_active			INTEGER
+- 승인된	is_approved			INTEGER
+- 타깃주소	user_target			INTEGER		(request_user_target key id 값)
