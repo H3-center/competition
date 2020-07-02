@@ -42,13 +42,13 @@ api_response
 
 admin_custom_pattern
 - 패턴	pattern				VARCHAR
--adm타겟	admin_target		INTEGER		(request_user_target key id 값)
+- adm타겟	admin_target		INTEGER		(request_user_target key id 값)
 
 
 
 user_custom_pattern
 - 패턴	pattern				VARCHAR
--usr타겟	user_target			INTEGER		(request_user_target key id 값)
+- usr타겟	user_target			INTEGER		(request_user_target key id 값)
 
 
 
@@ -135,7 +135,7 @@ request_admin_raw
 - 수정일	edited_date			DATETIME
 - 사용중	is_active			INTEGER
 - 승인된	is_approved			INTEGER
--adm타겟	admin_target		INTEGER		(request_admin_target key id 값)
+- adm타겟	admin_target		INTEGER		(request_admin_target key id 값)
 - 종류	extension			INTEGER		(request_result key id 값)
 - raw값	raw값				VARCHAR
 
@@ -146,7 +146,7 @@ request_user_raw
 - 수정일	edited_date			DATETIME
 - 사용중	is_active			INTEGER
 - 승인된	is_approved			INTEGER
--adm타겟	user_target			INTEGER		(request_user_target key id 값)
+- adm타겟	user_target			INTEGER		(request_user_target key id 값)
 - 종류	extension			INTEGER		(request_result key id 값)
 - raw값	raw값				VARCHAR
 
@@ -167,3 +167,19 @@ request_user_target_log
 - 사용중	is_active			INTEGER
 - 승인된	is_approved			INTEGER
 - 타깃주소	user_target			INTEGER		(request_user_target key id 값)
+
+
+
+execute_user_job_log
+
+- 타깃주소 user_target			INTEGER		(request_user_target key id 값) 
+- job상태   user_job_status              INTEGER        (0: 정지, 1:진행중, 2:완료)
+
+
+
+
+
+execute_admin_job_log
+
+- 타깃주소 admin_target		INTEGER		(request_admin_target key id 값)
+- job상태   admin_job_status              INTEGER        (0: 정지, 1:진행중, 2:완료)
